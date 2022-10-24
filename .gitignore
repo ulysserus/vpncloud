@@ -10,5 +10,4 @@ builder/cache
 .idea
 release.sh
 __pycache__
-*.pem
 .vscode

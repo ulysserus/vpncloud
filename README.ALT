@@ -1,0 +1,28 @@
+Апстрим:
+git clone git@github.com:dswd/vpncloud.git
+(git checkout 16d5d47 - v2.3.0)
+
+Локальное дерево зависимостей cargo сохранено в /vendor:
+cd vpncloud && cargo vendor
+
+Указание для cargo на работу с локальной версией репозитория, полученного через "cargo vendor":
+cat >> .cargo/config <<EOF
+
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"
+EOF
+
+Из оригинального .gitignore убрана строчка ".pem", т.к. в пакете attohttpc, скачанном через vendor, есть тестовые ключи. При их удалении сборка ломается на проверке хэша:
+sed -i '/.pem/d' .gitignore
+
+Базовая структура .gear
+mkdir .gear && echo 'tar: .' > .gear/rules
+
+Свой spec скопировал из пакета watchexec в сизифе (тоже написан на rust)
+cp <...>/vpncloud.spec .
+
+Этот файл:
+cp <...>/README.ALT .
