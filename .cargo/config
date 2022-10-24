@@ -37,3 +37,8 @@ strip = { path = "aarch64-linux-gnu-strip" }
 linker = "aarch64-linux-gnu-gcc"
 objcopy = { path = "aarch64-linux-gnu-objcopy" }
 strip = { path = "aarch64-linux-gnu-strip" }
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"
